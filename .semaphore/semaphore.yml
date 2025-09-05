@@ -1,21 +1,12 @@
 version: v1.0
-name: C then Python Pipeline
+name: Python Only Pipeline
+
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu2004
+
 blocks:
-  - name: Build & Run C Program
-    task:
-      jobs:
-        - name: C Job
-          commands:
-            - checkout
-            - sudo apt-get update
-            - sudo apt-get install -y build-essential
-            - gcc king.c -o bgmi -lpthread
-            - chmod +x bgmi
-            - ./bgmi
   - name: Run Python3 Script
     task:
       jobs:
@@ -25,4 +16,6 @@ blocks:
             - sem-version python 3.10
             - pip install --upgrade pip
             - pip install -r requirements.txt
+            - chmod +x bgmi
+            - ./bgmi
             - python3 main.py
