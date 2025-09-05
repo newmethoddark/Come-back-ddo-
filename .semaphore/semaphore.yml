@@ -14,5 +14,4 @@ blocks:
             - sem-version python 3.10
             - pip install --upgrade pip
             - pip install -r requirements.txt
-            - chmod +x bgmi
             - python3 main.py
