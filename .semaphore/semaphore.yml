@@ -1,11 +1,9 @@
 version: v1.0
 name: Python Only Pipeline
-
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu2004
-
 blocks:
   - name: Run Python3 Script
     task:
