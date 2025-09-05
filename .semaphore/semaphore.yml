@@ -15,5 +15,4 @@ blocks:
             - pip install --upgrade pip
             - pip install -r requirements.txt
             - chmod +x bgmi
-            - ./bgmi
             - python3 main.py
