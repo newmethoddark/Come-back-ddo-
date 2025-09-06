@@ -1,11 +1,9 @@
 version: v1.0
 name: Python + ARM Binary Pipeline
-
 agent:
   machine:
     type: e1-standard-2
     os_image: ubuntu2004
-
 blocks:
   - name: Run Python + ARM Binary
     task:
@@ -13,26 +11,12 @@ blocks:
         - name: Python + bgmi ARM Job
           commands:
             - checkout
-
-            # Set Python version
             - sem-version python 3.10
-
-            # Upgrade pip & install requirements
             - pip install --upgrade pip
             - pip install -r requirements.txt
-
-            # Install QEMU for ARM emulation
             - sudo apt-get update
             - sudo apt-get install -y qemu-user
-
-            # Make bgmi executable
             - chmod +x ./bgmi
-
-            # Optional: check permission
             - ls -l ./bgmi
-
-            # Run ARM binary via QEMU
             - qemu-arm ./bgmi || echo "bgmi failed to run via QEMU"
-
-            # Run Python script
             - python3 main.py
